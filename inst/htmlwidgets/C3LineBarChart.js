@@ -32,20 +32,12 @@ HTMLWidgets.widget({
 
           			  // use the remaining data for y-values
           				value: keys,
-          			},
+          			      },
           			// set chart types
-          			types: {
-
-          		  	// default is line, we want totals to be displayed as bars
-          				Total: 'bar'
-          			},
-          			axes: {
-          			  // extra y-axis
-          				Total: 'y2'
-          			},
+          			  type: 'spline',
         		  },
-          		axis: {
-          			x: {
+          		  axis: {
+          			      x: {
           			  //  x axis as timeseries
           				type: "timeseries",
 
@@ -55,11 +47,6 @@ HTMLWidgets.widget({
           				}
           			},
           		},
-
-          		// display a subchart - this will be used for brushing in a later stage
-          		subchart: {
-          			show: true
-          		}
           	});
         }
 

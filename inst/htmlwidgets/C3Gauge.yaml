@@ -8,3 +8,4 @@ dependencies:
   src: htmlwidgets
   script: ./lib/c3.min.js
   style: ./lib/c3.min.css
+  

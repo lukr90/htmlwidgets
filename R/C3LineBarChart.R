@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-C3LineBarChart <- function(dataset, colors, width = NULL, height = NULL) {
+C3LineBarChart = function(dataset, colors, width = NULL, height = NULL) {
   
   # forward options using x
   x = list(
@@ -40,13 +40,13 @@ C3LineBarChart <- function(dataset, colors, width = NULL, height = NULL) {
 #' @name C3LineBarChart-shiny
 #'
 #' @export
-C3LineBarChartOutput <- function(outputId, width = '100%', height = '400px'){
+C3LineBarChartOutput = function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'C3LineBarChart', width, height, package = 'C3')
 }
 
 #' @rdname C3LineBarChart-shiny
 #' @export
-renderC3LineBarChart <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+renderC3LineBarChart = function(expr, env = parent.frame(), quoted = FALSE) {
+  if (!quoted) { expr = substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, C3LineBarChartOutput, env, quoted = TRUE)
 }
