@@ -1,10 +1,19 @@
 HTMLWidgets.widget({
-
+  
   name: 'C3LineBarChart',
 
   type: 'output',
 
   factory: function(el, width, height) {
+
+    // create custom function for week of year
+    
+    function getWeek(title){
+      const today = title;
+      const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+      const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+      return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
+    }
 
     // create an empty chart
     var chart = null;
@@ -22,31 +31,37 @@ HTMLWidgets.widget({
 
           	  // specify the container element we want the chart to render in
           		bindto: el,
-          		data: {
+          		  data: {
 
           		  // intialize with an empty array
           			json: [],
           			keys: {
           			      // use Time for x-axis
-          			      x: "Time",
+          			      x: 'Time',
 
           			  // use the remaining data for y-values
           				value: keys,
           			      },
           			// set chart types
-          			  type: 'spline',
+          			  type: 'spline'
         		  },
           		  axis: {
           			      x: {
           			  //  x axis as timeseries
-          				type: "timeseries",
+          				type: 'timeseries',
 
           				// tick format x-asis
           				tick: {
-          					format: "%Y-%m-%d"
+          					format: '%Y-%m-%d'
           				}
           			},
           		},
+          		  tooltip: {
+          		    // tooltip
+          		    format: {
+          		     title: function(title){return 'KW: ' + getWeek(title);}
+          		    }
+          		}
           	});
         }
 
