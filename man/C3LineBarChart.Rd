@@ -4,7 +4,7 @@
 \alias{C3LineBarChart}
 \title{<Add Title>}
 \usage{
-C3LineBarChart(dataset, colors, width = NULL, height = NULL)
+C3LineBarChart(dataset, colors, width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 <Add Description>

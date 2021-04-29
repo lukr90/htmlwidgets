@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'C3LineBarChart',
+  name: 'C3AreaChart',
 
   type: 'output',
 
@@ -38,8 +38,8 @@ HTMLWidgets.widget({
                     types: {
 
                     // default is line, we want totals to be displayed as bars
-                        Bestand: 'spline',
-                        Solllagerbestand: 'bar'
+                        GREEN: 'area',
+                        Total: 'area',
                     },
                 },
                 axis: {
