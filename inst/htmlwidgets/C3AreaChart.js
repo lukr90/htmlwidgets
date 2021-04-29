@@ -53,6 +53,12 @@ HTMLWidgets.widget({
                         }
                     },
                 },
+                tooltip: {
+          		    // tooltip
+          		    format: {
+          		     title: function(title){return 'Monat: ' + title.getMonth();}
+          		    }
+          		}
             });
         }
 
