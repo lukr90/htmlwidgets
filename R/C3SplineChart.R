@@ -44,6 +44,7 @@ C3SplineChartOutput = function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'C3SplineChart', width, height, package = 'C3')
 }
 
+
 #' @rdname C3SplineChart-shiny
 #' @export
 renderC3SplineChart = function(expr, env = parent.frame(), quoted = FALSE) {
