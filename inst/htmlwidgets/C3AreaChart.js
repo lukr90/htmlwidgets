@@ -38,8 +38,8 @@ HTMLWidgets.widget({
                     types: {
 
                     // default is line, we want totals to be displayed as bars
-                        GREEN: 'area',
-                        Total: 'area',
+                        Solllagerbestand: 'area',
+                        Lagerbestand: 'area'
                     },
                 },
                 axis: {
