@@ -1,13 +1,37 @@
 HTMLWidgets.widget({
 
-  name: 'C3AreaChart',
+  name: 'C3AreaChart_dollar',
 
   type: 'output',
 
   factory: function(el, width, height) {
+    
+     // create custom function for week of year
+    
+    function getWeek(title){
+      const today = title;
+      const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+      const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+      return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
+    }
 
     // create an empty chart
     var chart = null;
+    
+    var ger = d3.locale ({
+            "decimal": ".",
+            "thousands": ",",
+            "grouping": [3],
+            "currency": ["", "€"],
+            "dateTime": "%a %b %e %X %Y",
+            "date": "%m/%d/%Y",
+            "time": "%H:%M:%S",
+            "periods": ["AM", "PM"],
+            "days": ["Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+            "shortDays": ["Son", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+            "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            "shortMonths": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    })
 
     return {
 
@@ -49,14 +73,20 @@ HTMLWidgets.widget({
 
                         // tick format x-axis
                         tick: {
-                            format: "%Y-%m-%d"
+                            format: "%Y-%m"
                         }
                     },
+                    y: {
+                      // y axis as euro
+                        tick: {
+                            format: ger.numberFormat("$,.2f")
+                        }
+                    }
                 },
                 tooltip: {
           		    // tooltip
           		    format: {
-          		     title: function(title){return 'Monat: ' + title.getMonth();}
+          		     title: function(title){return 'Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
           		    }
           		}
             });

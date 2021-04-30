@@ -1,10 +1,20 @@
 HTMLWidgets.widget({
 
-  name: 'C3LineBarChart',
+  name: 'C3AreaChart_int',
 
   type: 'output',
 
   factory: function(el, width, height) {
+    
+    
+    // create custom function for week of year
+    
+    function getWeek(title){
+      const today = title;
+      const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+      const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+      return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
+    }
 
     // create an empty chart
     var chart = null;
@@ -38,9 +48,14 @@ HTMLWidgets.widget({
                     types: {
 
                     // default is line, we want totals to be displayed as bars
-                        Bestand: 'spline',
-                        Solllagerbestand: 'bar'
+                        Solllagerbestand: 'area',
+                        Lagerbestand: 'area'
                     },
+                },
+                grid: {
+                    y: {
+                        lines: [{value: 0, class: "cc"}]
+                    }
                 },
                 axis: {
                     x: {
@@ -49,10 +64,16 @@ HTMLWidgets.widget({
 
                         // tick format x-axis
                         tick: {
-                            format: "%Y-%m-%d"
+                            format: "%Y-%m"
                         }
                     },
                 },
+                tooltip: {
+          		    // tooltip
+          		    format: {
+          		     title: function(title){return 'Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
+          		    }
+          		}
             });
         }
 

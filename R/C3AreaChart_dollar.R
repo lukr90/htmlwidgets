@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-C3LineBarChart <- function(dataset, colors, width = NULL, height = NULL, elementId = NULL) {
+C3AreaChart_dollar <- function(dataset, colors, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
@@ -15,7 +15,7 @@ C3LineBarChart <- function(dataset, colors, width = NULL, height = NULL, element
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'C3LineBarChart',
+    name = 'C3AreaChart_dollar',
     x,
     width = width,
     height = height,
@@ -24,30 +24,30 @@ C3LineBarChart <- function(dataset, colors, width = NULL, height = NULL, element
   )
 }
 
-#' Shiny bindings for C3LineBarChart
+#' Shiny bindings for C3AreaChart_dollar
 #'
-#' Output and render functions for using C3LineBarChart within Shiny
+#' Output and render functions for using C3AreaChart_dollar within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a C3LineBarChart
+#' @param expr An expression that generates a C3AreaChart_dollar
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name C3LineBarChart-shiny
+#' @name C3AreaChart_dollar-shiny
 #'
 #' @export
-C3LineBarChartOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'C3LineBarChart', width, height, package = 'C3')
+C3AreaChart_dollarOutput <- function(outputId, width = '100%', height = '400px'){
+  htmlwidgets::shinyWidgetOutput(outputId, 'C3AreaChart_dollar', width, height, package = 'C3')
 }
 
-#' @rdname C3LineBarChart-shiny
+#' @rdname C3AreaChart_dollar-shiny
 #' @export
-renderC3LineBarChart <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderC3AreaChart_dollar <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, C3LineBarChartOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, C3AreaChart_dollarOutput, env, quoted = TRUE)
 }
