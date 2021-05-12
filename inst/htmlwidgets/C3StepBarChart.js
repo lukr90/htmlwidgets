@@ -39,10 +39,10 @@ HTMLWidgets.widget({
 
                     // default is line, we want totals to be displayed as bars
                         Verkauf: 'bar',
-                        MittlererBestand: 'area',
+                        MittlererBestand: 'area-spline',
                         Forecast: 'step',
                         TageVerfuegbar: 'stanford',
-                        Bestand: 'spline'
+                        Bestand: 'area-spline'
                     }
                 },
                 grid: {
