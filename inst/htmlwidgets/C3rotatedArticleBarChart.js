@@ -62,7 +62,7 @@ HTMLWidgets.widget({
                 
                 axis: {
                   // rotated Axes
-                  rotated: true,
+                    rotated: true,
                   
                     x: {
                       //  x axis as timeseries
@@ -81,9 +81,15 @@ HTMLWidgets.widget({
                 },
                 tooltip: {
           		    // tooltip
-          		    format: {
-          		     title: function(title){return ''}
-          		    }
+          		          format: {
+          		                // title: function(title) {return title},
+          		                value: function(value, ratio, id){
+                                      // var format = id !== 'ratio' ? d3.format(',') : ger.numberFormat(',%');
+                                      var format = id !== "Deckung" ? d3.format(',') : ger.numberFormat(',%');
+                                      
+                                      return format(value);
+          		                }
+          		      }
           		}
             });
         }
