@@ -54,8 +54,8 @@ HTMLWidgets.widget({
 
                     // default is line, we want totals to be displayed as bars
                         Umsatz: 'bar',
-                        Marge: 'bar',
-                        Deckung: 'stanford',
+                        Marge: 'stanford',
+                        Deckung: 'bar',
                         Menge: 'stanford'
                     },
                 },
@@ -85,7 +85,7 @@ HTMLWidgets.widget({
           		                // title: function(title) {return title},
           		                value: function(value, ratio, id){
                                       // var format = id !== 'ratio' ? d3.format(',') : ger.numberFormat(',%');
-                                      var format = id !== "Deckung" ? d3.format(',') : ger.numberFormat(',%');
+                                      var format = id !== "Marge" ? d3.format(',') : ger.numberFormat(',%');
                                       
                                       return format(value);
           		                }
