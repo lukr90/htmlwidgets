@@ -45,7 +45,7 @@ HTMLWidgets.widget({
                     keys: {
                       
                       // use the remaining data for y-values
-                        x: 'Artikelnummer',
+                        x: 'Artikel',
                         value: keys,
                     },
 
@@ -68,7 +68,7 @@ HTMLWidgets.widget({
                       //  x axis as timeseries
                         type: 'category',
                         label: {
-                              text: 'Artikelnummer',
+                              text: 'Artikel',
                               position: 'outter-top'
                         }
                     },
