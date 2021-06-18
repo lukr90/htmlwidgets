@@ -45,7 +45,7 @@ HTMLWidgets.widget({
                     keys: {
                       
                       // use the remaining data for y-values
-                        x: 'Artikel',
+                        x: 'Time',
                         value: keys,
                     },
 
@@ -54,42 +54,56 @@ HTMLWidgets.widget({
 
                     // default is line, we want totals to be displayed as bars
                         Umsatz: 'bar',
-                        Marge: 'stanford',
+                        Marge: 'spline',
                         Deckung: 'bar',
-                        Menge: 'stanford'
                     },
+                    
+                    axes: {
+                        Umsatz: 'y',
+                        Marge: 'y2',
+                        Deckung: 'y',
+                    }
                 },
                 
                 axis: {
-                  // rotated Axes
-                    rotated: true,
-                  
+
                     x: {
                       //  x axis as timeseries
-                        type: 'category',
-                        label: {
-                              text: 'Artikel',
-                              position: 'outter-top'
-                        }
+                        type: 'timeseries',
                     },
                     
                     y: {
                         tick: {
                             format: ger.numberFormat('$,.2f')
+                        },
+                        
+                        label: {
+                              text: 'Umsatz & Deckung',
+                              position: 'outter-top'
+                        }
+                    },
+                    
+                    y2: {
+                        show: true,
+                        
+                        max: 1,
+                        
+                        tick: {
+                            format: d3.format(',%')
+                        },
+                        
+                        label: {
+                              text: 'Marge',
+                              position: 'outter-top'
                         }
                     }
                 },
+                
                 tooltip: {
           		    // tooltip
           		          format: {
-          		                // title: function(title) {return title},
-          		                value: function(value, ratio, id){
-                                      // var format = id !== 'ratio' ? d3.format(',') : ger.numberFormat(',%');
-                                      var format = id !== "Marge" ? d3.format(',') : ger.numberFormat(',%');
-                                      
-                                      return format(value);
-          		                }
-          		      }
+          		     title: function(title){return 'Monat: ' + (title.getMonth() + 1) + ' Jahr: ' + title.getFullYear();}
+          		    }
           		}
             });
         }
