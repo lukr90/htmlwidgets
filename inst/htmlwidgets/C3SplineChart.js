@@ -55,11 +55,17 @@ HTMLWidgets.widget({
           					format: '%Y-%m-%d'
           				}
           			},
+          			
+          			      y: {
+          			  tick: {
+                    format: d3.format(',%')
+                 }
+          			}
           		},
           		  tooltip: {
           		    // tooltip
           		    format: {
-          		     title: function(title){return 'KW: ' + getWeek(title);}
+          		     title: function(title){return 'KW: ' + getWeek(title) + " Jahr: " + title.getFullYear();}
           		    }
           		}
           	});
