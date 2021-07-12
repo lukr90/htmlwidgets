@@ -65,7 +65,7 @@ HTMLWidgets.widget({
                     // default is line, we want totals to be displayed as bars
                         Anteil: 'spline',
                         OptimalerLagerwert: 'area',
-                        VerfuegbarerLagerwert: 'area'
+                        VerfuegbarerOptimalerLagerwert: 'area'
                     },
                     axes: {
                         Prozent: 'y2',
