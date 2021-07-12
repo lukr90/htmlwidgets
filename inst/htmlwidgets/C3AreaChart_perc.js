@@ -70,7 +70,7 @@ HTMLWidgets.widget({
                     axes: {
                         Prozent: 'y2',
                         OptimalerLagerwert: 'y',
-                        VerfuegbarerLagerwert: 'y'
+                        VerfuegbarerOptimalerLagerwert: 'y'
                     }
                 },
                 grid: {
