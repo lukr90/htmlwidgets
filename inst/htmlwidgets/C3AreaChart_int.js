@@ -48,7 +48,7 @@ HTMLWidgets.widget({
                     types: {
 
                     // default is line, we want totals to be displayed as bars
-                        Solllagerbestand: 'area',
+                        OptimalerBestand: 'area',
                         Lagerbestand: 'area'
                     },
                 },
