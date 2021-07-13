@@ -62,8 +62,8 @@ HTMLWidgets.widget({
                     types: {
 
                     // default is line, we want totals to be displayed as bars
-                        Solllagerbestand: 'area',
-                        Lagerbestand: 'area'
+                        OptimalerLagerwert: 'area',
+                        Lagerwert: 'area'
                     },
                 },
                 axis: {
