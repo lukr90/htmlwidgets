@@ -15,6 +15,9 @@ HTMLWidgets.widget({
       const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
       return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
     }
+    
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     // create an empty chart
     var chart = null;
@@ -54,7 +57,15 @@ HTMLWidgets.widget({
                 },
                 grid: {
                     y: {
-                        lines: [{value: 0, class: "cc"}]
+                        lines: [
+                          {value: 0, class: "cc"}
+                          ]
+                    },
+                    
+                    x: {
+                        lines: [
+                            {value: date, text: date, class: "cc"}
+                          ]
                     }
                 },
                 axis: {
@@ -71,7 +82,7 @@ HTMLWidgets.widget({
                 tooltip: {
           		    // tooltip
           		    format: {
-          		     title: function(title){return 'Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
+          		     title: function(title){return 'Jahr: ' + title.getFullYear() + ', Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
           		    }
           		}
             });

@@ -15,6 +15,9 @@ HTMLWidgets.widget({
       const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
       return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
     }
+    
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     // create an empty chart
    var chart = null;
@@ -30,7 +33,7 @@ HTMLWidgets.widget({
             "periods": ["AM", "PM"],
             "days": ["Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
             "shortDays": ["Son", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-            "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",             "Dezember"],
             "shortMonths": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     })
 
@@ -75,7 +78,15 @@ HTMLWidgets.widget({
                 },
                 grid: {
                     y: {
-                        lines: [{value: 0, class: "cc"}]
+                        lines: [
+                          {value: 0, class: "cc"}
+                          ]
+                    },
+                    
+                    x: {
+                        lines: [
+                            {value: date, text: date, class: "cc"}
+                          ]
                     }
                 },
                 axis: {
@@ -106,7 +117,7 @@ HTMLWidgets.widget({
                 tooltip: {
           		    // tooltip
           		    format: {
-          		     title: function(title){return 'Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
+          		     title: function(title){return 'Jahr: ' + title.getFullYear() + ', Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
           		    }
           		}
             });
