@@ -61,7 +61,7 @@ HTMLWidgets.widget({
                     axes: {
                         Umsatz: 'y',
                         Marge: 'y2',
-                        Deckung: 'y',
+                        Deckung: 'y'
                     }
                 },
                 

@@ -20,7 +20,7 @@ HTMLWidgets.widget({
             "periods": ["AM", "PM"],
             "days": ["Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
             "shortDays": ["Son", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-            "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            "months": ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",                    "Dezember"],
             "shortMonths": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     })
          
@@ -44,8 +44,7 @@ HTMLWidgets.widget({
                     json: [],
                     keys: {
                       
-                      // use the remaining data for y-values
-                        x: 'Kunde',
+                        
                         value: keys,
                     },
 
@@ -54,42 +53,62 @@ HTMLWidgets.widget({
 
                     // default is line, we want totals to be displayed as bars
                         Umsatz: 'bar',
-                        Marge: 'stanford',
                         Deckung: 'bar',
-                        Menge: 'stanford'
+                        Marge: 'spline'
                     },
+                    
+                    axes: {
+                      
+                        Umsatz: 'y',
+                        Marge: 'y2',
+                        Deckung: 'y'
+                    }
                 },
                 
                 axis: {
-                  // rotated Axes
-                  rotated: true,
-                  
+
                     x: {
                       //  x axis as timeseries
                         type: 'category',
-                        label: {
-                              text: 'Kunde',
-                              position: 'outter-top'
-                        }
                     },
                     
                     y: {
                         tick: {
                             format: ger.numberFormat('$,.2f')
+                        },
+                        
+                        label: {
+                              text: 'Umsatz & Deckung',
+                              position: 'outter-top'
+                        }
+                    },
+                    
+                    y2: {
+                        show: true,
+                        
+                        max: 1,
+                        
+                        tick: {
+                            format: d3.format(',%')
+                        },
+                        
+                        label: {
+                              text: 'Marge',
+                              position: 'outter-top'
                         }
                     }
                 },
+                
                 tooltip: {
-          		    // tooltip
-          		          format: {
-          		                // title: function(title) {return title},
-          		                value: function(value, ratio, id){
-                                      // var format = id !== 'ratio' ? d3.format(',') : ger.numberFormat(',%');
-                                      var format = id !== "Marge" ? d3.format(',') : ger.numberFormat(',%');
-                                      
-                                      return format(value);
-          		                }
-          		      }
+                  
+                    format: {
+                      
+                        title: function (d) { return d; },
+                        value: function (value, ratio, id) {
+                        var format = id === 'Marge' ? d3.format(',%') :ger.numberFormat('$,.2f');
+                        return format(value);
+                    } 
+                }
           		}
             });
         }
