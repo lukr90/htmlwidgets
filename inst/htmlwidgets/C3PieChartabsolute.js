@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'C3rotatedCustomerBarChart',
+  name: 'C3PieChartabsolute',
 
   type: 'output',
 
@@ -20,7 +20,7 @@ HTMLWidgets.widget({
             "periods": ["AM", "PM"],
             "days": ["Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
             "shortDays": ["Son", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-            "months": ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",                    "Dezember"],
+            "months": ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",                     "Dezember"],
             "shortMonths": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     })
          
@@ -44,58 +44,34 @@ HTMLWidgets.widget({
                     json: [],
                     keys: {
                       
-                        x: 'Kategorie',
-                        value: keys
+                      // keys
+                        value: keys,
                     },
-
-                    // set chart types
-                    types: {
-
-                    // default is line, we want totals to be displayed as bars
-                        Umsatz: 'bar',
-                        Deckung: 'bar',
-                        Marge: 'stanford'
-                    },
-                    
-                    axes: {
-                      
-                        Umsatz: 'y',
-                        Deckung: 'y',
-                        Marge: 'y'
-                    }
+                    type: "pie",
                 },
                 
-                axis: {
+                pie: {
                   
-                    rotated: true,
-                    
-                    x: {
-                        type: 'category'
-                    },
-
-                    y: {
-                        tick: {
-                            format: ger.numberFormat('$,.2f')
-                        },
-                        
-                        label: {
-                              text: 'Umsatz & Deckung',
-                              position: 'outter-top'
-                        }
-                    }
+                    label: {
+                          format: function (value, ratio, id) {
+                          return ger.numberFormat('$,.2f')(value);}
+                           }
                 },
                 
                 tooltip: {
                   
                     format: {
-                      
-                        title: function (d) { return d; },
-                        value: function (value, ratio, id) {
-                        var format = id === 'Marge' ? d3.format(',%') :ger.numberFormat('$,.2f');
-                        return format(value);
-                    } 
+                          
+                          title: function (x) { 
+                            return x;},
+                          value: function (value) {
+                            return ger.numberFormat('$,.2f')(value);}
+                          }
+                },
+                
+                legend: {
+                  position: "right"
                 }
-          		}
             });
         }
 
