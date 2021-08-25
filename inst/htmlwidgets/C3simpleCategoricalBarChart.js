@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'C3simpleKWBarChart',
+  name: 'C3simpleCategoricalBarChart',
 
   type: 'output',
 
@@ -9,14 +9,7 @@ HTMLWidgets.widget({
     // create an empty chart
     var chart = null;
     
-    function getWeek(title){
-      const today = title;
-      const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-      const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
-      return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
-    }
-    
-    var ger = d3.locale ({
+        var ger = d3.locale ({
             "decimal": ".",
             "thousands": ",",
             "grouping": [3],
@@ -27,10 +20,9 @@ HTMLWidgets.widget({
             "periods": ["AM", "PM"],
             "days": ["Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
             "shortDays": ["Son", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-            "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+            "months": ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",             "Dezember"],
             "shortMonths": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    })
-         
+          })
 
     return {
 
@@ -52,7 +44,7 @@ HTMLWidgets.widget({
                     keys: {
                       
                       // use the remaining data for y-values
-                        x: 'Time',
+                        x: 'Wochentag',
                         value: keys,
                     },
 
@@ -60,16 +52,15 @@ HTMLWidgets.widget({
                     types: {
 
                     // default is line, we want totals to be displayed as bars
-                        Summe: 'bar',
                         Durchschnitt: 'bar'
-                    }
+                    },
                 },
                 
                 axis: {
-
+                  
                     x: {
                       //  x axis as timeseries
-                        type: 'timeseries',
+                        type: 'category'
                     },
                     
                     y: {
@@ -78,13 +69,6 @@ HTMLWidgets.widget({
                         }
                     }
                 },
-                
-                tooltip: {
-          		    // tooltip
-          		          format: {
-          		     title: function(title){return 'KW: ' + getWeek(title) + ' Jahr: ' + title.getFullYear();}
-          		    }
-          		}
             });
         }
 
