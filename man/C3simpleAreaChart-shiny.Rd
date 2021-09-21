@@ -2,13 +2,13 @@
 % Please edit documentation in R/C3simpleAreaChart.R
 \name{C3simpleAreaChart-shiny}
 \alias{C3simpleAreaChart-shiny}
-\alias{C3AreaChart_intOutput}
-\alias{renderC3AreaChart_int}
+\alias{C3simpleAreaChartOutput}
+\alias{renderC3simpleAreaChart}
 \title{Shiny bindings for C3simpleAreaChart}
 \usage{
-C3AreaChart_intOutput(outputId, width = "100\%", height = "400px")
+C3simpleAreaChartOutput(outputId, width = "100\%", height = "400px")
 
-renderC3AreaChart_int(expr, env = parent.frame(), quoted = FALSE)
+renderC3simpleAreaChart(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

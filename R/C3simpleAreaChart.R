@@ -41,13 +41,13 @@ C3simpleAreaChart <- function(dataset, colors, width = NULL, height = NULL, elem
 #' @name C3simpleAreaChart-shiny
 #'
 #' @export
-C3AreaChart_intOutput <- function(outputId, width = '100%', height = '400px'){
+C3simpleAreaChartOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'C3simpleAreaChart', width, height, package = 'C3')
 }
 
 #' @rdname C3simpleAreaChart-shiny
 #' @export
-renderC3AreaChart_int <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderC3simpleAreaChart <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, C3AreaChart_intOutput, env, quoted = TRUE)
 }
