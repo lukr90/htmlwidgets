@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'C3PieChart',
+  name: 'C3DonutChart',
 
   type: 'output',
 
@@ -47,7 +47,7 @@ HTMLWidgets.widget({
                       // keys
                         value: keys,
                     },
-                    type: "pie",
+                    type: "donut",
                 },
                 
                 legend: {

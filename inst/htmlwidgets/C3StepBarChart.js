@@ -6,6 +6,16 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
     
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    
+    function getWeek(title){
+      const today = title;
+      const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+      const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+      return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
+    }
+    
     // create an empty chart
     var chart = null;
 
@@ -42,12 +52,16 @@ HTMLWidgets.widget({
                         MittlererBestand: 'area-spline',
                         Forecast: 'step',
                         TageVerfuegbar: 'stanford',
-                        Bestand: 'area-spline'
+                        Bestand: 'area-spline',
+                        Status: 'spline'
                     }
                 },
                 grid: {
                     y: {
                         lines: [{value: 0, class: "cc"}]
+                    },
+                    x: {
+                        lines: [{value: date, text: date, class: "cc"}]
                     }
                 },
                 axis: {
@@ -64,7 +78,7 @@ HTMLWidgets.widget({
                 tooltip: {
           		    // tooltip
           		    format: {
-          		     title: function(title){return 'Monat: ' + (title.getMonth() + 1) + ' Jahr: ' + title.getFullYear();}
+          		     title: function(title){return title.toDateString() + ', KW: ' + getWeek(title);}
           		    }
           		}
             });

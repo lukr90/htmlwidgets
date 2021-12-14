@@ -15,6 +15,21 @@ HTMLWidgets.widget({
       return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7) - 1;
     }
     
+     var ger = d3.locale ({
+          "decimal": ".",
+          "thousands": ",",
+          "grouping": [3],
+          "currency": ["", "€"],
+          "dateTime": "%a %b %e %X %Y",
+          "date": "%m/%d/%Y",
+          "time": "%H:%M:%S",
+          "periods": ["AM", "PM"],
+          "days": ["Sontag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+          "shortDays": ["Son", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+          "months": ["Januar", "Februar", "MÃ¤rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November",             "Dezember"],
+          "shortMonths": ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    })
+    
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
@@ -47,7 +62,7 @@ HTMLWidgets.widget({
           			      },
           			// set chart types
           			  type: 'spline'
-        		  },
+        		    },
         		    grid: {
                       y: {
                           lines: [
@@ -60,7 +75,8 @@ HTMLWidgets.widget({
                             ]
                     }
                 },
-        		  
+                point: { r: 0, focus : { expand: { r:4}}
+                },
           		  axis: {
           			      x: {
           			  //  x axis as timeseries
@@ -75,13 +91,13 @@ HTMLWidgets.widget({
           			      y: {
           			  tick: {
                     format: d3.format(',%')
-                 }
-          			}
-          		},
+                    }
+          			  }
+          		  },
           		  tooltip: {
           		    // tooltip
           		    format: {
-          		     title: function(title){return 'Jahr: ' + title.getFullYear() + ', Monat: ' + (title.getMonth() + 1) + ', KW: ' + getWeek(title);}
+          		     title: function(title){return title.toDateString() + ', KW: ' + getWeek(title);}
           		    }
           		}
           	});
