@@ -43,6 +43,7 @@ HTMLWidgets.widget({
                       // use the remaining data for y-values
                         value: keys,
                     },
+                    type: 'bar',
 
                     // set chart types
                     types: {
@@ -53,7 +54,8 @@ HTMLWidgets.widget({
                         Forecast: 'step',
                         TageVerfuegbar: 'stanford',
                         Bestand: 'area-spline',
-                        Status: 'spline'
+                        Status: 'spline',
+                        OptimalerBestand: 'spline'
                     }
                 },
                 grid: {
